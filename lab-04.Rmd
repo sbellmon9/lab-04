@@ -24,10 +24,9 @@ states <- read_csv("data/states.csv")
 
 ### Exercise 1
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+
+
+#c: There La Quintas in Ecuador, Columbia, Dubai, Turkiye, Georgia, Australia, China, Mexico, and Canada. According to the website given, there are no Denny's outside the U.S.
 
 ### Exercise 2
 
