@@ -13,6 +13,7 @@ output: github_document
 ```
 
 
+
 ```{r load-packages, message = FALSE}
 library(tidyverse)
 library(dsbox) 
@@ -56,20 +57,6 @@ dennys %>%
   mutate(country = "United States")
 ```
 
-
-...
-
-
-
-...
-
-
-
-...
-
-
-
-...
 
 ### Excercise 7
 
@@ -118,4 +105,40 @@ lq <- lq %>%
   filter(country == "United States")
 ```
 
-California has the most amount of dennys. Alaska, Montana, South Dakota, and Vermont had the fewest amounts of Dennys. This makes sense as California is the biggest state in the U.S., so more land equals more oppurtunity to build a dennys. The other states with only 1 dennys have many rural areas so it there is not a lot of business that can come from these states.
+California has the most amount of dennys. Alaska, Montana, South Dakota, and Vermont had the fewest amounts of Dennys. This makes sense as California is the biggest state in the U.S., so more land equals more oppurtunity to build a dennys. The other states with only 1 dennys have many rural areas so it there is not a lot of business that can come from these states. 
+
+Least: Mexico and Columbia
+Most: California, Florida, Texas
+This makes sense as California are the states in the U.S. with the biggest populations, so more people equals more opportunity to have business. Mexico and Columbia probably have more culturally significant restaurants prevalent in their countries. 
+
+
+
+```{r}
+dn %>% 
+  count(state) %>% 
+  inner_join(states, by = c("state" = "abbreviation"))
+```
+
+
+### Excercise 10
+
+```{r}
+dn <- dn %>%
+  mutate(establishment = "Denny's")
+lq <- lq %>%
+  mutate(establishment = "La Quinta")
+```
+
+```{r}
+dn_lq <- bind_rows(dn, lq)
+```
+
+```{r}
+ggplot(dn_lq, mapping = aes(
+  x = longitude,
+  y = latitude,
+  color = establishment
+)) +
+  geom_point()
+```
+
