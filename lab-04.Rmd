@@ -24,33 +24,98 @@ states <- read_csv("data/states.csv")
 
 ### Exercise 1
 
+??dennys
 
+??laquinta
 
-#c: There La Quintas in Ecuador, Columbia, Dubai, Turkiye, Georgia, Australia, China, Mexico, and Canada. According to the website given, there are no Denny's outside the U.S.
+View(laquinta)
+
+The Denny's dataset has `r nrow(dennys)` rows and `r ncol(dennys)` columns. Each row represents an individual Denny's location. The variables are address, city, state, zip, longitude, and latitude.
 
 ### Exercise 2
-
-Remove this text, and add your answer for Exercise 2 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+The La Quinta dataset has `r nrow(laquinta)` rows and `r ncol(laquinta)` columns. Each row represents the different locations of the La Quinta hotels. The variables are address, city, state, zip, longitude, and latitude.
 
 ### Exercise 3
-
-...
+There are La Quintas in Ecuador, Columbia, Dubai, Turkiye, Georgia, Australia, China, Mexico, and Canada. According to the website given, there are no Denny's outside the U.S.
 
 ### Exercise 4
+One way to deteermine international locations would be to look at the state abbreviations of each location and see if it belongs to a U.S. state or not.
 
-...
+
 
 ### Exercise 5
-
-...
+```{r}
+dennys %>% 
+  filter(!(state %in% states$abbreviation))
+```
 
 ### Exercise 6
+There are no dennys locations outide the U.S.
+```{r}
+dennys %>%
+  mutate(country = "United States")
+```
+
 
 ...
 
- 
-Add exercise headings as needed.
 
+
+...
+
+
+
+...
+
+
+
+...
+
+### Excercise 7
+
+There are La Quintas in Ecuador, Columbia, Dubai, Turkiye, Georgia, Australia, China, Mexico, and Canada.
+
+### Excercise 8
+
+```{r}
+lq <- laquinta
+```
+
+```{r}
+lq <- lq %>%
+  mutate(country = case_when(
+    state %in% states$abbreviation ~ "United States",
+    state %in% c("ON", "BC") ~ "Canada",
+    
+    # Mexico cities
+    city %in% c("Aguascalientes", "Ciudad Juarez", "Poza Rica", 
+                "Puebla", "Reynosa", "San Jose Chiapa") ~ "Mexico",
+    
+    # Turkiye cities
+    city %in% c("Bodrum", "Cesme", "Giresun", "Istanbul") ~ "Turkiye",
+    
+    # China cities
+    city %in% c("Chengdu", "Qionghai", "Suzhou", "Taiyuan", 
+                "Turpan", "Weifang", "Zunyi") ~ "China",
+    
+    # New Zealand cities
+    city %in% c("Auckland", "Queenstown") ~ "New Zealand",
+    
+    # UAE cities
+    city %in% c("Abu Dhabi", "Dubai") ~ "United Arab Emirates",
+    
+    # Individual City/Country matches
+    city == "Medellin" ~ "Colombia",
+    city == "Ecuador"  ~ "Ecuador",
+    city == "Georgia"  ~ "Georgia"
+  ))
+```
+
+### Excercise 9
+
+```{r}
+lq <- lq %>%
+  filter(country == "United States")
+```
+
+California has the most amount of dennys. Alaska, Montana, South Dakota, and Vermont had the fewest amounts of Dennys. This makes sense as California is the biggest state in the U.S., so more land equals more oppurtunity to build a dennys. The other states with only 1 dennys have many rural areas so it there is not a lot of business that can come from these states.
