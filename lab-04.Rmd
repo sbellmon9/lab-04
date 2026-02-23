@@ -109,9 +109,12 @@ California has the most amount of dennys. Alaska, Montana, South Dakota, and Ver
 
 Least: Mexico and Columbia
 Most: California, Florida, Texas
-This makes sense as California are the states in the U.S. with the biggest populations, so more people equals more opportunity to have business. Mexico and Columbia probably have more culturally significant restaurants prevalent in their countries. 
+This makes sense as California, Florida, and Texas are the states in the U.S. with the biggest populations, so more people equals more opportunity to have business. Mexico and Columbia probably have more culturally significant restaurants prevalent in their countries. 
 
 
+```{r}
+dn <- dennys
+```
 
 ```{r}
 dn %>% 
@@ -141,4 +144,45 @@ ggplot(dn_lq, mapping = aes(
 )) +
   geom_point()
 ```
+
+### Excercise 11
+
+```{r}
+dn_nc <- dn %>% filter(state == "NC")
+lq_nc <- lq %>% filter(state == "NC")
+```
+
+```{r}
+ggplot() +
+  geom_point(data = dn_nc, aes(x = longitude, y = latitude), 
+             color = "red", alpha = 0.5, size = 2) +
+  geom_point(data = lq_nc, aes(x = longitude, y = latitude), 
+             color = "blue", alpha = 0.5, size = 2, shape = 17) +
+  labs(title = "Denny's vs. La Quinta in North Carolina",
+       subtitle = "Red = Denny's, Blue = La Quinta",
+       x = "Longitude", y = "Latitude")
+```
+Mitch Hedberg’s joke does not appear to hold here, there are only a few places where there is a laquinta next to a Denny's
+
+### Excercise 12
+
+```{r}
+dn_tx <- dn %>% filter(state == "TX")
+lq_tx <- lq %>% filter(state == "TX")
+```
+
+
+```{r}
+ggplot() +
+  geom_point(data = dn_tx, aes(x = longitude, y = latitude), 
+             color = "red", alpha = 0.3, size = 1.5) +
+  geom_point(data = lq_tx, aes(x = longitude, y = latitude), 
+             color = "blue", alpha = 0.3, size = 1.5, shape = 17) +
+  labs(title = "Denny's vs. La Quinta in Texas",
+       subtitle = "Red = Denny's, Blue = La Quinta",
+       x = "Longitude", y = "Latitude")
+```
+Mitch Hedberg’s joke DEFENITELY appears to hold here!
+
+
 
