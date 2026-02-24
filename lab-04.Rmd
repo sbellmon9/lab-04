@@ -68,11 +68,15 @@ There are La Quintas in Ecuador, Columbia, Dubai, Turkiye, Georgia, Australia, C
 lq <- laquinta
 ```
 
+
 ```{r}
 lq <- lq %>%
   mutate(country = case_when(
     state %in% states$abbreviation ~ "United States",
-    state %in% c("ON", "BC") ~ "Canada",
+    state %in% c("ON") ~ "Canada",
+    
+    # British Columbia cities
+    city %in% c("Richmond") ~ "British Columbia"
     
     # Mexico cities
     city %in% c("Aguascalientes", "Ciudad Juarez", "Poza Rica", 
