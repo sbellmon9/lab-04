@@ -123,7 +123,12 @@ lq <- lq %>%
     city == "Ecuador"  ~ "Ecuador",
     city == "Georgia"  ~ "Georgia"
   ))
+
+summary(factor(lq$country))
 ```
+
+    ##        Canada United States          NA's 
+    ##             2           895            12
 
 ### Excercise 9
 

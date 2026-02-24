@@ -51,7 +51,9 @@ dennys %>%
 ```
 
 ### Exercise 6
+
 There are no dennys locations outide the U.S.
+
 ```{r}
 dennys %>%
   mutate(country = "United States")
@@ -66,6 +68,8 @@ There are La Quintas in Ecuador, Columbia, Dubai, Turkiye, Georgia, Australia, C
 
 ```{r}
 lq <- laquinta
+
+
 ```
 
 
@@ -100,6 +104,8 @@ lq <- lq %>%
     city == "Ecuador"  ~ "Ecuador",
     city == "Georgia"  ~ "Georgia"
   ))
+
+summary(factor(lq$country))
 ```
 
 ### Excercise 9
