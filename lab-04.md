@@ -95,40 +95,22 @@ Australia, China, Mexico, and Canada.
 lq <- laquinta
 ```
 
+View(lq)
+
 ``` r
 lq <- lq %>%
   mutate(country = case_when(
-    state %in% states$abbreviation ~ "United States",
+    state %in% state.abb ~ "United States",
     state %in% c("ON", "BC") ~ "Canada",
-    
-    # Mexico cities
-    city %in% c("Aguascalientes", "Ciudad Juarez", "Poza Rica", 
-                "Puebla", "Reynosa", "San Jose Chiapa") ~ "Mexico",
-    
-    # Turkiye cities
-    city %in% c("Bodrum", "Cesme", "Giresun", "Istanbul") ~ "Turkiye",
-    
-    # China cities
-    city %in% c("Chengdu", "Qionghai", "Suzhou", "Taiyuan", 
-                "Turpan", "Weifang", "Zunyi") ~ "China",
-    
-    # New Zealand cities
-    city %in% c("Auckland", "Queenstown") ~ "New Zealand",
-    
-    # UAE cities
-    city %in% c("Abu Dhabi", "Dubai") ~ "United Arab Emirates",
-    
-    # Individual City/Country matches
-    city == "Medellin" ~ "Colombia",
-    city == "Ecuador"  ~ "Ecuador",
-    city == "Georgia"  ~ "Georgia"
+    state == "ANT" ~ "Colombia",
+    state == "FM" ~ "Honduras",
+    state %in% c("AG", "CH", "NL", "PU", "QR", "SL", "VE") ~ "Mexico"
   ))
-
 summary(factor(lq$country))
 ```
 
-    ##        Canada United States          NA's 
-    ##             2           895            12
+    ##        Canada      Colombia      Honduras        Mexico United States 
+    ##             2             1             1            10           895
 
 ### Excercise 9
 
