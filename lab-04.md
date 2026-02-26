@@ -112,6 +112,13 @@ summary(factor(lq$country))
     ##        Canada      Colombia      Honduras        Mexico United States 
     ##             2             1             1            10           895
 
+### The specific instruction for excercise 7 says finding the La Quinta locations outside the US may require some googling, so I took this as using the website given in the lab of the La Quinta locations to find the internatiional locations.
+
+Add a country variable to the La Quinta dataset. Use the case_when
+function to populate this variable. You’ll need to refer to your notes
+from Exercise 7 about which country the non-US locations are in. Here is
+some starter code to get you going:
+
 ### Excercise 9
 
 ``` r
